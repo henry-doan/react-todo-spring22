@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
 
-function App() {
+const App = () => {
+  const [todos, setTodos] = useState([
+    {id: 1, title: 'Learn Ruby', complete: true },
+    {id: 2, title: 'Learn JS', complete: false },
+    {id: 3, title: 'Learn ReactJS', complete: false },
+  ])
+
+  const renderTitles = () => {
+    return todos.map( todo => {
+      return(
+        <li>{todo.title}</li>
+      )
+    })
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <h1>My Todo List</h1>
+      <ul>
+        {renderTitles()}
+      </ul>
+    </>
+  )
 }
 
 export default App;
